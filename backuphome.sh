@@ -1,4 +1,5 @@
-#! /bin/bash ###############################################
+#! /bin/bash
+############################################################
 #Created by Alex Vasilenko #################################
 ############################################################
 #Protected from being copyrighted because it is copylefted #
@@ -92,7 +93,7 @@ function restoreBackup()
 		cd ~/.homeBack_Ups
 		backUpPicked=$(($input - 1))
 		echo "Restoring backup ${fileArray[backUpPicked]}..."
-		tar -xzvf ${fileArray[backUpPicked]} -C ~
+		tar -xzvfk ${fileArray[backUpPicked]} -C ~
 		read -p "Restore complete."
 	else
 		read -p "Restore canceled."
