@@ -46,18 +46,22 @@ function createNewBackup()
  cd ~
  #I give credit for this bit of the code to galaktos from Reddit
  #http://www.reddit.com/r/bash/comments/36378b/new_user_tar_ignore_folders/crabt79
- excludes=(.homeBack_Ups .cache .dropbox Dropbox .steam .mozilla Downloads \
-  Videos BTSync)
+ excludes=(.homeBack_Ups .cache .config .dbus .dropbox .dropbox-dist .steam .mozilla \
+            Dropbox Stuffff Downloads Videos BTSync Pictures)
  excludesOptions() {
     for exclude in "${excludes[@]}"; do
         echo "--exclude=$exclude"
     done
  }
  #end of credit
+ echo "${green}Backing up your home folder."
+ echo "This will take a while, you can check on the status with the following command"
+ echo "${blue}tail -f ~/.homeBack_Ups/$timeStamp.files ${green} in a diffrent terminal"
  tar -cvzf ~/.homeBack_Ups/$timeStamp.tar.gz $(excludesOptions) . > ~/.homeBack_Ups/$timeStamp.files
 
  #makes the backup only accessible by owner, and not writable
  chmod 500 ~/.homeBack_Ups/$timeStamp.tar.gz
+ chmod 500 ~/.homeBack_Ups/$timeStamp.files
 
  echo ""
  echo "================================================================="
@@ -252,6 +256,7 @@ function deleteBackup()
             backUpPicked=$(($input - 1))
             echo -en "${green}Deleting ${red}${backupArray[backUpPicked]} ${green}..."
 		    chmod 600 ${backupArray[backUpPicked]}
+            chmod 600 ${filesArray[backUpPicked]}
             rm ${backupArray[backUpPicked]}
             rm ${filesArray[backUpPicked]}
             echo -e "${red} Deleted."
