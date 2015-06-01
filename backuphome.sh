@@ -46,7 +46,8 @@ function createNewBackup()
  cd ~
  #I give credit for this bit of the code to galaktos from Reddit
  #http://www.reddit.com/r/bash/comments/36378b/new_user_tar_ignore_folders/crabt79
- excludes=(.homeBack_Ups .cache .dropbox Dropox .steam .mozilla Downloads BTSync)
+ excludes=(.homeBack_Ups .cache .dropbox Dropbox .steam .mozilla Downloads \
+  Videos BTSync)
  excludesOptions() {
     for exclude in "${excludes[@]}"; do
         echo "--exclude=$exclude"
