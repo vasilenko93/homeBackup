@@ -1,7 +1,6 @@
 /home/ Backup
 ============
 
-Version 1.5  
 
 A simple script that backs up your entire home folder  
 ...  
